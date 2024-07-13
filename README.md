@@ -7,7 +7,8 @@
 5) `cd backend`
 6) `python manage.py createsuperuser` для создания админ аккаунта
 7) Для запуска тестов в том же терминале запустите `python manage.py test`
-7) В браузере откройте http://localhost:8000/admin/ и войдите в админ аккаунт
+8) В браузере откройте http://localhost:8000/admin/ и войдите в админ аккаунт
+9) Обновите .env своими username и password.
 
 
 # Функционал

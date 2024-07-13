@@ -1,10 +1,14 @@
 import requests
+import os
 from retry import retry
+from dotenv import load_dotenv
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from .models import Order
+
+load_dotenv()
 
 @retry(tries=5, delay=1)
 def get_token(credentials):
@@ -42,8 +46,8 @@ def send_data(token, order):
 def order(sender, instance, created, **kwargs):
     if instance.status == instance.Status.FINISHED:
         credentials = {
-            'username':'admin',
-            'password':'123'
+            'username':os.environ.get('USERNAME'),
+            'password':os.environ.get('PASSWORD')
         }
         token = get_token(credentials)
         try:
